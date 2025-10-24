@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}案例管理 · 形思工业设计{% endblock %}
+{% block content %}
+<section class="section admin-projects" id="hero">
+  <div class="container">
+    <div class="section-header">
+      <h1>案例管理</h1>
+      <a class="btn btn-primary" href="{{ url_for('admin.create_project') }}">新增案例</a>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>名称</th>
+          <th>分类</th>
+          <th>链接</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for project in projects %}
+        <tr>
+          <td>{{ project.name }}</td>
+          <td>{{ project.category }}</td>
+          <td><a href="{{ url_for('main.project_detail', slug=project.slug) }}" target="_blank">查看</a></td>
+          <td class="actions">
+            <a class="btn btn-text" href="{{ url_for('admin.edit_project', project_id=project.id) }}">编辑</a>
+            <form method="post" action="{{ url_for('admin.delete_project', project_id=project.id) }}" onsubmit="return confirm('确认删除该案例？');">
+              <button type="submit" class="btn btn-text danger">删除</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

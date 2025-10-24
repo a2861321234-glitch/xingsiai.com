@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}{{ project.name }} · 形思工业设计{% endblock %}
+{% block content %}
+<section class="section project-detail" id="hero" data-theme-color="cases">
+  <div class="container">
+    <div class="detail-header">
+      <a href="{{ url_for('main.index') }}#cases" class="btn btn-ghost">返回案例</a>
+      <h1>{{ project.name }}</h1>
+      <span class="badge">{{ project.category }}</span>
+    </div>
+    <div class="detail-gallery">
+      {% for image in project.images[:6] %}
+      <figure class="detail-image">
+        <img src="{{ url_for('static', filename=image.image_path) }}" alt="{{ project.name }} 视觉 {{ loop.index }}" loading="lazy" />
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
