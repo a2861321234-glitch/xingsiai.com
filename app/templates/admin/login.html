@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}登录后台 · 形思工业设计{% endblock %}
+{% block content %}
+<section class="section admin-login" id="hero">
+  <div class="container narrow">
+    <h1>管理后台登录</h1>
+    <form method="post" class="form-card">
+      <label for="username">用户名</label>
+      <input type="text" id="username" name="username" required />
+      <label for="password">密码</label>
+      <input type="password" id="password" name="password" required />
+      <button type="submit" class="btn btn-primary">登录</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

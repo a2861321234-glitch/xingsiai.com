@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}站点信息设置 · 形思工业设计{% endblock %}
+{% block content %}
+<section class="section admin-settings" id="hero">
+  <div class="container">
+    <h1>站点信息设置</h1>
+    <form method="post" class="form-grid">
+      <div class="form-field">
+        <label for="hero_title">首页标题</label>
+        <input type="text" id="hero_title" name="hero_title" value="{{ settings.hero_title }}" />
+      </div>
+      <div class="form-field">
+        <label for="hero_subtitle">首页副标题</label>
+        <textarea id="hero_subtitle" name="hero_subtitle" rows="3">{{ settings.hero_subtitle }}</textarea>
+      </div>
+      <div class="form-field">
+        <label for="hero_cta_text">主按钮文字</label>
+        <input type="text" id="hero_cta_text" name="hero_cta_text" value="{{ settings.hero_cta_text }}" />
+      </div>
+      <div class="form-field">
+        <label for="hero_cta_link">主按钮链接</label>
+        <input type="text" id="hero_cta_link" name="hero_cta_link" value="{{ settings.hero_cta_link }}" />
+      </div>
+      <div class="form-field">
+        <label for="hero_secondary_cta_text">次按钮文字</label>
+        <input type="text" id="hero_secondary_cta_text" name="hero_secondary_cta_text" value="{{ settings.hero_secondary_cta_text }}" />
+      </div>
+      <div class="form-field">
+        <label for="hero_secondary_cta_link">次按钮链接</label>
+        <input type="text" id="hero_secondary_cta_link" name="hero_secondary_cta_link" value="{{ settings.hero_secondary_cta_link }}" />
+      </div>
+      <div class="form-field">
+        <label for="about_title">关于标题</label>
+        <input type="text" id="about_title" name="about_title" value="{{ settings.about_title }}" />
+      </div>
+      <div class="form-field">
+        <label for="about_body">关于内容</label>
+        <textarea id="about_body" name="about_body" rows="4">{{ settings.about_body }}</textarea>
+      </div>
+      <div class="form-field">
+        <label for="about_highlights">亮点（使用|分隔）</label>
+        <input type="text" id="about_highlights" name="about_highlights" value="{{ settings.about_highlights }}" />
+      </div>
+      <div class="form-field">
+        <label for="innovation_title">创新服务标题</label>
+        <input type="text" id="innovation_title" name="innovation_title" value="{{ settings.innovation_title }}" />
+      </div>
+      <div class="form-field">
+        <label for="innovation_body">创新服务内容</label>
+        <textarea id="innovation_body" name="innovation_body" rows="4">{{ settings.innovation_body }}</textarea>
+      </div>
+      <div class="form-field">
+        <label for="insights_title">资讯标题</label>
+        <input type="text" id="insights_title" name="insights_title" value="{{ settings.insights_title }}" />
+      </div>
+      <div class="form-field">
+        <label for="contact_business">新业务邮箱</label>
+        <input type="email" id="contact_business" name="contact_business" value="{{ settings.contact_business }}" />
+      </div>
+      <div class="form-field">
+        <label for="contact_recruit">招聘邮箱</label>
+        <input type="email" id="contact_recruit" name="contact_recruit" value="{{ settings.contact_recruit }}" />
+      </div>
+      <div class="form-field">
+        <label for="contact_general">通用咨询邮箱</label>
+        <input type="email" id="contact_general" name="contact_general" value="{{ settings.contact_general }}" />
+      </div>
+      <div class="form-field">
+        <label for="contact_phone">联系电话</label>
+        <input type="text" id="contact_phone" name="contact_phone" value="{{ settings.contact_phone }}" />
+      </div>
+      <div class="form-field">
+        <label for="contact_address">联系地址</label>
+        <input type="text" id="contact_address" name="contact_address" value="{{ settings.contact_address }}" />
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">保存修改</button>
+        <a class="btn btn-ghost" href="{{ url_for('admin.dashboard') }}">返回</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

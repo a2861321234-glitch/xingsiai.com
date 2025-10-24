@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}后台总览 · 形思工业设计{% endblock %}
+{% block content %}
+<section class="section admin-dashboard" id="hero">
+  <div class="container">
+    <div class="section-header">
+      <h1>后台总览</h1>
+      <p>欢迎回来，{{ current_user.username }}。当前共有 {{ project_count }} 个案例。</p>
+      <div class="admin-actions">
+        <a class="btn btn-primary" href="{{ url_for('admin.create_project') }}">新增案例</a>
+        <a class="btn btn-ghost" href="{{ url_for('admin.settings') }}">编辑站点信息</a>
+        <form method="post" action="{{ url_for('admin.logout') }}" class="inline-form">
+          <button class="btn btn-text" type="submit">退出登录</button>
+        </form>
+      </div>
+    </div>
+    <div class="dashboard-panels">
+      <div class="panel">
+        <h2>导航项</h2>
+        <ul>
+          <li>首页</li>
+          <li>关于形思</li>
+          <li>设计案例</li>
+          <li>创新服务</li>
+          <li>联系我们</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>联系邮箱</h2>
+        <p><strong>新业务：</strong> {{ settings.contact_business }}</p>
+        <p><strong>招聘信息：</strong> {{ settings.contact_recruit }}</p>
+        <p><strong>通用咨询：</strong> {{ settings.contact_general }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
