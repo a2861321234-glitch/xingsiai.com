@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block title %}形思工业设计 · Xingsi Industrial Design{% endblock %}
+{% block content %}
+<section class="hero" id="hero" data-theme-color="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-text">
+      <h1>{{ settings.hero_title if settings else 'READY TO SHAPE THE FUTURE?' }}</h1>
+      <p>{{ settings.hero_subtitle if settings else '' }}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ settings.hero_cta_link if settings else '#contact' }}">{{ settings.hero_cta_text if settings else 'GET IN TOUCH' }}</a>
+        <a class="btn btn-ghost" href="{{ settings.hero_secondary_cta_link if settings else '#cases' }}">{{ settings.hero_secondary_cta_text if settings else 'VIEW PROJECTS' }}</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-media"></div>
+    </div>
+  </div>
+  <div class="scroll-indicator">Scroll</div>
+</section>
+
+<section class="section about" id="about" data-theme-color="about">
+  <div class="container split">
+    <div class="section-header">
+      <p class="eyebrow">ABOUT</p>
+      <h2>{{ settings.about_title if settings else '关于形思' }}</h2>
+    </div>
+    <div class="section-body">
+      <p>{{ settings.about_body if settings else '' }}</p>
+      <div class="highlights">
+        {% if settings and settings.about_highlights %}
+        {% for item in settings.about_highlights.split('|') %}
+        <div class="highlight-card">
+          <span>{{ item.strip() }}</span>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cases" id="cases" data-theme-color="cases">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">PORTFOLIO</p>
+      <h2>设计案例</h2>
+      <div class="filter-group" role="tablist">
+        <button class="filter-btn active" data-filter="all">全部案例</button>
+        {% for category in categories %}
+        <button class="filter-btn" data-filter="{{ category }}">{{ category }}</button>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="case-grid">
+      {% for project in projects %}
+      <article class="case-card" data-category="{{ project.category }}">
+        <a href="{{ url_for('main.project_detail', slug=project.slug) }}" class="case-link">
+          <div class="case-image" style="background-image:url('{{ url_for('static', filename=project.cover_image) }}')"></div>
+          <div class="case-info">
+            <h3>{{ project.name }}</h3>
+            <span>{{ project.category }}</span>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section services" id="services" data-theme-color="services">
+  <div class="container split">
+    <div class="section-header">
+      <p class="eyebrow">SERVICES</p>
+      <h2>{{ settings.innovation_title if settings else '创新服务' }}</h2>
+    </div>
+    <div class="section-body">
+      <p>{{ settings.innovation_body if settings else '' }}</p>
+      <ul class="service-list">
+        <li>· 产品策略共创与用户洞察</li>
+        <li>· 外观与结构一体化设计迭代</li>
+        <li>· 快速原型与CMF实验室协同</li>
+        <li>· 供应链导入与量产优化</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" data-theme-color="contact">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">CONTACT</p>
+      <h2>联系我们</h2>
+      <p>随时欢迎关于新项目合作、人才加入以及通用咨询。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>新业务</h3>
+        <p>业务合作与项目咨询</p>
+        <a href="mailto:{{ settings.contact_business if settings else '' }}">{{ settings.contact_business if settings else '' }}</a>
+      </div>
+      <div class="contact-card">
+        <h3>招聘信息</h3>
+        <p>加入跨学科创新团队</p>
+        <a href="mailto:{{ settings.contact_recruit if settings else '' }}">{{ settings.contact_recruit if settings else '' }}</a>
+      </div>
+      <div class="contact-card">
+        <h3>通用咨询</h3>
+        <p>媒体采访、品牌合作等</p>
+        <a href="mailto:{{ settings.contact_general if settings else '' }}">{{ settings.contact_general if settings else '' }}</a>
+      </div>
+    </div>
+    <div class="contact-meta">
+      <span>{{ settings.contact_phone if settings else '' }}</span>
+      <span>{{ settings.contact_address if settings else '' }}</span>
+    </div>
+  </div>
+</section>
+{% endblock %}

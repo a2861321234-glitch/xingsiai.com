@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f1f2e" />
+      <stop offset="100%" stop-color="#2f5de0" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#grad)" />
+  <g fill="#ffffff" fill-opacity="0.85" font-family="'Inter', sans-serif" text-anchor="middle">
+    <text x="50%" y="48%" font-size="120">XS INDUSTRIAL DESIGN</text>
+    <text x="50%" y="62%" font-size="72">16:9 SHOWCASE</text>
+  </g>
+</svg>
